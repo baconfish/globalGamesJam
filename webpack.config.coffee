@@ -1,9 +1,9 @@
 module.exports = 
 	entry: "./src/index.coffee"
 	output:
+		pathinfo:true
 		path: "dist"
-		filename: "[hash].js"
-		hash: true
+		filename: "script.js"
 	module:
 		loaders: [
 					test: /\.vs$/
@@ -20,6 +20,8 @@ module.exports =
 				,
 					test: /\.sass$/
 					loader: (require "extract-text-webpack-plugin").extract "style-loader", "css-loader!sass-loader?indentedSyntax"
+				,
+          {test: /\.json$/, loader:'json-loader'}
 			]
 	plugins: [
 				new (require "clean-webpack-plugin") "dist"
