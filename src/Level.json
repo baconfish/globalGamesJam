@@ -113,7 +113,17 @@
       "y": 96
     },
     "width": 97,
-    "height": 152
+    "height": 152,
+    "states": {
+      "opened": {
+        "x": 624,
+        "y": 96,
+        "width": 97,
+        "height": 152
+      },
+      "closed": null
+    },
+    "defaultState": "opened"
   }, {
     "name": "nightstand",
     "flavour": "upstanding!",
@@ -131,7 +141,17 @@
       "y": 152
     },
     "width": 49,
-    "height": 40
+    "height": 40,
+    "states": {
+      "ringing": {
+        "x": 392,
+        "y": 112,
+        "width": 80,
+        "height": 80
+      },
+      "disarmed": null
+    },
+    "defaultState": "ringing"
   }, {
     "name": "lightbulb",
     "flavour": "prise the sun",
@@ -151,15 +171,6 @@
     "width": 137,
     "height": 85
   }, {
-    "name": "bed",
-    "flavour": "ZZZZZzzzzzz",
-    "position": {
-      "x": 471,
-      "y": 165
-    },
-    "width": 137,
-    "height": 85
-  }, {
     "name": "picture",
     "flavour": "pretty",
     "position": {
@@ -167,7 +178,17 @@
       "y": 95
     },
     "width": 65,
-    "height": 50
+    "height": 50,
+    "states": {
+      "crooked": {
+        "x": 496,
+        "y": 88,
+        "width": 88,
+        "height": 64
+      },
+      "straight": null
+    },
+    "defaultState": "crooked"
   }, {
     "name": "lightbulb",
     "flavour": "prise the sun",

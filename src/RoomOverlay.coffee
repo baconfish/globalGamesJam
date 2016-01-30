@@ -15,6 +15,6 @@ module.exports = class RoomOverlay
     @_container.addChild mask
     @_container.addChild sprite
     
-    EventService.on 'objectClicked', (itemModel) =>
+    EventService.on 'proximity', (itemModel) =>
       if itemModel.name is @roomModel.switch
         sprite.texture = if sprite.texture is PIXI.utils.TextureCache.levelBright then PIXI.utils.TextureCache.levelDark else PIXI.utils.TextureCache.levelBright

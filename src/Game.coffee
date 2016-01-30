@@ -17,6 +17,7 @@ module.exports = class Game
 
     @stage.addChild level._container
     @stage.addChild player._container
-
-    # UpdateService.add (time, delta) -> console.log "Time: #{time}, Delta: #{delta}"
-    # , 100
+    
+    EventService.on "proximity", (itemModel, itemInstance) => switch itemModel.name
+        when "alarm" then itemInstance.setState "disarmed"
+        when "picture" then itemInstance.setState "straight"

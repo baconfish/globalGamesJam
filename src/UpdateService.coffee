@@ -4,6 +4,7 @@ updatables = []
 oldTime = 0
 toRemove = []
 toAdd = []
+
 EventService = require './EventService.coffee'
 
 EventService.on 'pause', (state) ->

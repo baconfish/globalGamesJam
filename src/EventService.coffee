@@ -6,8 +6,11 @@ EventService =
     events[evnt].push fn
   off: (event, fn) ->
     events[event].splice events[event].indexOf(fn), 1
-  trigger: (evnt, data) ->
+  trigger: (evnt) ->
     if events[evnt]
-      e(data) for e in events[evnt]
+      #if data.position.x - Player.position.x < 25 and data.position.x - Player.position.x > -data.width-25
+      argscopy = (arg for arg in arguments)
+      argscopy.shift()
+      e.apply this, argscopy for e in events[evnt]
     
 module.exports = EventService
