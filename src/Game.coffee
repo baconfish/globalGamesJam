@@ -18,9 +18,5 @@ module.exports = class Game
     @stage.addChild level._container
     @stage.addChild player._container
 
-    for roomModel in data.rooms
-      r = new RoomOverlay roomModel
-      @stage.addChild r._container
-
     # UpdateService.add (time, delta) -> console.log "Time: #{time}, Delta: #{delta}"
     # , 100

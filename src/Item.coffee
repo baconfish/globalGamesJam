@@ -11,7 +11,7 @@ module.exports = class Item
     gfx.beginFill 0xFF0000
     gfx.drawRect 0, 0, itemModel.width, itemModel.height
     gfx.endFill()
-    gfx.alpha = 0.5
+    gfx.alpha = 0.0
     @_container.addChild gfx
     
     @_container.interactive = true

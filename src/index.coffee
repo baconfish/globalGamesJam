@@ -15,7 +15,8 @@ PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST
 PIXI.loader
   .add "player", require "file!./dude1.png"
   .add "playernude", require "file!./dude2.png"
-  .add "level", require "file!./background1.png"
+  .add "levelBright", require "file!./background1.png"
+  .add "levelDark", require "file!./background2.png"
   .load (loader, resources) ->
     for t of resources
       PIXI.Texture.addTextureToCache resources[t].texture, t

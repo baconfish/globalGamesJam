@@ -1,11 +1,10 @@
 Item = require './Item.coffee'
 itemModels = require './Level.json'
+RoomOverlay = require "./RoomOverlay.coffee"
 
 module.exports = class Level
   constructor: ->
     @_container = new PIXI.Container()
-    sprite = new PIXI.Sprite PIXI.utils.TextureCache.level
-    @_container.addChild sprite
     
     items = []
     
@@ -13,3 +12,7 @@ module.exports = class Level
       i = new Item item
       @_container.addChild i._container
       items.push i
+
+    for roomModel in itemModels.rooms
+      r = new RoomOverlay roomModel
+      @_container.addChild r._container      

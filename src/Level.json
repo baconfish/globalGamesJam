@@ -5,10 +5,15 @@
     "x": 0,
     "width": 320
   }, {
-    "name": "bathroom",
+    "name": "bedroom",
     "switch": "lightswitchbedroom",
     "x": 320,
-    "width": 450
+    "width": 466
+  }, {
+    "name": "kitchenDiner",
+    "switch": "lightswitchKitchen",
+    "x": 786,
+    "width": 654
   }],
   "items": [{
     "name": "shower",
@@ -244,5 +249,14 @@
     },
     "width": 29,
     "height": 40
+  }, {
+    "name": "lightswitchKitchen",
+    "flavour": "switch me",
+    "position": {
+      "x": 920,
+      "y": 144
+    },
+    "width": 24,
+    "height": 24
   }]
 }

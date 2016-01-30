@@ -4,14 +4,17 @@ module.exports = class RoomOverlay
   OFFALPHA = 0.8
   constructor: (@roomModel) ->
     @_container = new PIXI.Container()
-    @_container.position.x = @roomModel.x
-    gfx = new PIXI.Graphics()
-    gfx.beginFill 0x000000
-    gfx.drawRect 0, 0, @roomModel.width, 256
-    gfx.endFill()
-    gfx.alpha = OFFALPHA
-    @_container.addChild gfx
+    sprite = new PIXI.Sprite PIXI.utils.TextureCache.levelBright
+    
+    mask = new PIXI.Graphics()
+    mask.beginFill 0x000000
+    mask.drawRect @roomModel.x, 0, @roomModel.width, sprite.height
+    mask.endFill()
+  
+    sprite.mask = mask
+    @_container.addChild mask
+    @_container.addChild sprite
     
     EventService.on 'objectClicked', (itemModel) =>
       if itemModel.name is @roomModel.switch
-        gfx.alpha = if gfx.alpha is OFFALPHA then 0 else OFFALPHA
+        sprite.texture = if sprite.texture is PIXI.utils.TextureCache.levelBright then PIXI.utils.TextureCache.levelDark else PIXI.utils.TextureCache.levelBright
