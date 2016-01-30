@@ -167,7 +167,7 @@
     "name": "lightbulb",
     "flavour": "prise the sun",
     "position": {
-      "x": 900,
+      "x": 911,
       "y": 21
     },
     "width": 41,
@@ -176,10 +176,73 @@
     "name": "lightbulb",
     "flavour": "prise the sun",
     "position": {
-      "x": 1400,
+      "x": 1199,
       "y": 21
     },
     "width": 41,
     "height": 27
+  }, {
+    "name": "frontdoor",
+    "flavour": "get out!",
+    "position": {
+      "x": 808,
+      "y": 96
+    },
+    "width": 88,
+    "height": 152
+  }, {
+    "name": "sofa",
+    "flavour": "smushy",
+    "position": {
+      "x": 919,
+      "y": 176
+    },
+    "width": 73,
+    "height": 72
+  }, {
+    "name": "tv",
+    "flavour": "gogglebox",
+    "position": {
+      "x": 1056,
+      "y": 168
+    },
+    "width": 48,
+    "height": 80
+  }, {
+    "name": "washingmachine",
+    "flavour": "wrrrrr",
+    "position": {
+      "x": 1112,
+      "y": 168
+    },
+    "width": 72,
+    "height": 80
+  }, {
+    "name": "fridge",
+    "flavour": "iced ice baby",
+    "position": {
+      "x": 1192,
+      "y": 96
+    },
+    "width": 104,
+    "height": 152
+  }, {
+    "name": "counter",
+    "flavour": "things",
+    "position": {
+      "x": 1303,
+      "y": 184
+    },
+    "width": 121,
+    "height": 65
+  }, {
+    "name": "tapKitchen",
+    "flavour": "water",
+    "position": {
+      "x": 1350,
+      "y": 144
+    },
+    "width": 29,
+    "height": 40
   }]
 }
