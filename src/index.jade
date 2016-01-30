@@ -4,4 +4,20 @@ html
 		script(src ="https://cdnjs.cloudflare.com/ajax/libs/keydrown/1.2.1/keydrown.js")
 		title baconfish global games jam
 	body
-		#label Label
+		#label 
+			#title
+			#flavour
+		#bubble
+		#win-state
+			.big YOU WIN!
+			.small
+				p You managed to get all your things and had a good day at work.
+				p Good for you.
+				p 
+					a(href="javascript:history.go(0)") Play again?
+					span &nbsp;&nbsp;(some things will be different?)
+		#instructions
+			p Good morning.  You should complete your morning ritual before you leave for work.
+			p Click/tap on an item to use it.  If you can't see your whole apartment, scroll left/right.
+			p However, you must also satisfy the following of your own rituals:
+			ul#rituals

@@ -23,7 +23,18 @@
       "y": 80
     },
     "width": 72,
-    "height": 170
+    "height": 170,
+    "states": {
+      "running": {
+        "x": 8,
+        "y": 80,
+        "width": 72,
+        "height": 168
+      },
+      "unused": null,
+      "used": null
+    },
+    "defaultState": "unused"
   }, {
     "name": "toilet",
     "flavour": "Take a dump.",
@@ -81,6 +92,7 @@
   }, {
     "name": "lightswitch",
     "flavour": "flick!",
+    "type": "lightswitch",
     "position": {
       "x": 256,
       "y": 152
@@ -90,6 +102,7 @@
   }, {
     "name": "lightswitchbedroom",
     "flavour": "flick!",
+    "type": "lightswitch",
     "position": {
       "x": 352,
       "y": 152
@@ -98,7 +111,7 @@
     "height": 24
   }, {
     "name": "lightbulb",
-    "flavour": "prise the sun",
+    "flavour": "praise the sun",
     "position": {
       "x": 127,
       "y": 21
@@ -123,7 +136,7 @@
       },
       "closed": null
     },
-    "defaultState": "opened"
+    "defaultState": "closed"
   }, {
     "name": "nightstand",
     "flavour": "upstanding!",
@@ -154,7 +167,7 @@
     "defaultState": "ringing"
   }, {
     "name": "lightbulb",
-    "flavour": "prise the sun",
+    "flavour": "praise the sun",
     "position": {
       "x": 543,
       "y": 21
@@ -169,7 +182,17 @@
       "y": 165
     },
     "width": 137,
-    "height": 85
+    "height": 85,
+    "states": {
+      "made": null,
+      "unmade": {
+        "x": 472,
+        "y": 168,
+        "width": 136,
+        "height": 80
+      }
+    },
+    "defaultState": "unmade"
   }, {
     "name": "picture",
     "flavour": "pretty",
@@ -191,7 +214,7 @@
     "defaultState": "crooked"
   }, {
     "name": "lightbulb",
-    "flavour": "prise the sun",
+    "flavour": "praise the sun",
     "position": {
       "x": 911,
       "y": 21
@@ -200,7 +223,7 @@
     "height": 27
   }, {
     "name": "lightbulb",
-    "flavour": "prise the sun",
+    "flavour": "praise the sun",
     "position": {
       "x": 1199,
       "y": 21
@@ -233,7 +256,17 @@
       "y": 168
     },
     "width": 48,
-    "height": 80
+    "height": 80,
+    "states": {
+      "off": {
+        "x": 920,
+        "y": 136,
+        "width": 192,
+        "height": 112
+      },
+      "on": null
+    },
+    "defaultState": "on"
   }, {
     "name": "washingmachine",
     "flavour": "wrrrrr",
@@ -251,7 +284,18 @@
       "y": 96
     },
     "width": 104,
-    "height": 152
+    "height": 152,
+    "states": {
+      "opened": {
+        "x": 1192,
+        "y": 0,
+        "width": 104,
+        "height": 256
+      },
+      "closed": null,
+      "unopened": null
+    },
+    "defaultState": "unopened"
   }, {
     "name": "counter",
     "flavour": "things",
@@ -273,6 +317,7 @@
   }, {
     "name": "lightswitchKitchen",
     "flavour": "switch me",
+    "type": "lightswitch",
     "position": {
       "x": 920,
       "y": 144

@@ -4,10 +4,11 @@ require "./index.sass"
 UpdateService = require './UpdateService.coffee'
 Game = require './Game.coffee'
 LabelComp = do require './LabelComp.coffee'
+BubbleComp = do require './BubbleComp.coffee'
 
 game = undefined
 
-renderer = PIXI.autoDetectRenderer window.innerWidth, window.innerHeight, {antialias:false}
+renderer = PIXI.autoDetectRenderer 180 * 8, 32 * 8, {antialias:false}
 document.body.appendChild renderer.view
 
 PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST

@@ -9,14 +9,55 @@
 	font-weight: inherit
 	font-size: inherit
 	color: inherit
+	text-align: center
 	
 body 
-	overflow: hidden
+	overflow-y: hidden
+	overflow-x: auto
+	background: black
+	color: white
+	text-align: center
+	
+canvas 
+	position: absolute
+	top: 0
+	left: 0
 	
 #label
 	visibility: hidden
-	position: absolute
-	background: green
+	position: fixed
+	background: lightslategrey
 	padding: 0.2rem
-	white-space: pre-wrap
 	pointer-events: none
+	color: darkslategrey
+	border-radius: 5%
+	border: solid darkslategrey 0.25rem
+	text-align: center
+
+#title
+	font-weight: 600
+	
+#flavour
+	font-style: italic
+	
+#bubble
+	font-family: monospace
+	visibility: hidden
+	position: absolute
+	background: white
+	color: grey
+	padding: 0.2rem
+	pointer-events: none
+	border-radius: 25%
+	border: solid grey 0.25rem
+	font-weight: 100
+	font-style: italic
+	max-width: 7.5rem
+	
+#win-state
+	display: none
+	.big
+		font-size: 200px
+		
+#instructions
+	margin-top: 256px;

@@ -5,14 +5,23 @@ UpdateService = require './UpdateService.coffee'
 module.exports = class LabelComp
   constructor: ->
     el = document.querySelector '#label'
+    title = document.querySelector '#title'
+    flavour = document.querySelector '#flavour'
+    
+    currentItem = null
 
     EventService.on 'mouseOver', (itemModel) ->
+      currentItem = itemModel
       el.style.visibility = 'visible'
-      el.textContent = "#{itemModel.name}\n#{itemModel.flavour}"
+      title.textContent = "#{itemModel.name}"
+      flavour.textContent = "#{itemModel.flavour}"
     
-    EventService.on 'mouseOut', ->
-      el.style.visibility = 'hidden'
+    EventService.on 'mouseOut', (itemModel) ->
+      if itemModel is currentItem
+        el.style.visibility = 'hidden'
+        currentItem = null
 
     document.addEventListener 'mousemove', (data) ->
-      el.style.left = "#{data.clientX}px" 
-      el.style.top = "#{data.clientY-45}px"
+      if currentItem?
+        el.style.left = "#{data.clientX}px" 
+        el.style.top = "#{data.clientY-45}px"

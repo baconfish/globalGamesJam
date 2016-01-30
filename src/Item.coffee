@@ -1,7 +1,7 @@
 EventService = require './EventService.coffee'
 
 module.exports = class Item
-  constructor: (itemModel) ->
+  constructor: (itemModel, levelInstance) ->
     @_container = new PIXI.Container()
     # raw gfx drawing
     gfx = new PIXI.Graphics()
@@ -20,21 +20,28 @@ module.exports = class Item
       stateTextures = {}
       for key, value of itemModel.states
         if not value then continue
-        stateTextures[key] = new PIXI.Texture PIXI.utils.TextureCache.levelBright2.baseTexture, (new PIXI.Rectangle value.x, value.y, value.width, value.height)
+        stateTextures[key] = 
+          bright: new PIXI.Texture PIXI.utils.TextureCache.levelBright2.baseTexture, (new PIXI.Rectangle value.x, value.y, value.width, value.height)
+          dark: new PIXI.Texture PIXI.utils.TextureCache.levelDark2.baseTexture, (new PIXI.Rectangle value.x, value.y, value.width, value.height)
       @setState = (name) -> 
         @state = name
         value = itemModel.states[name]
         tex = stateTextures[name]
         if tex
-          overlaySprite.texture = tex
+          lit = levelInstance.getContainingRoomAt itemModel.position.x
+            .instance
+            .lit
+          overlaySprite.texture = if lit then tex.bright else tex.dark
           overlaySprite.position.x = value.x
           overlaySprite.position.y = value.y
-          overlaySprite.width = tex.width
-          overlaySprite.height = tex.height
+          overlaySprite.width = overlaySprite.texture.width
+          overlaySprite.height = overlaySprite.texture.height
           overlaySprite.visible = true
         else
           overlaySprite.visible = false
       @setState itemModel.defaultState
+      EventService.on "lightSwitched", =>
+        @setState @state
         
     else
       @setState = (name) -> 
@@ -48,4 +55,4 @@ module.exports = class Item
     
     @_container.mouseover = -> EventService.trigger 'mouseOver', itemModel
     
-    @_container.mouseout = -> EventService.trigger 'mouseOut'
+    @_container.mouseout = -> EventService.trigger 'mouseOut', itemModel
