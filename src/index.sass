@@ -10,6 +10,7 @@
 	font-size: inherit
 	color: inherit
 	text-align: center
+	list-style: none
 	
 body 
 	overflow-y: hidden
@@ -22,6 +23,7 @@ canvas
 	position: absolute
 	top: 0
 	left: 0
+	z-index: -2
 	
 #label
 	visibility: hidden
@@ -40,24 +42,34 @@ canvas
 #flavour
 	font-style: italic
 	
-#bubble
+#bubbleContainer
 	font-family: monospace
 	visibility: hidden
 	position: absolute
-	background: white
-	color: grey
-	padding: 0.2rem
 	pointer-events: none
-	border-radius: 25%
-	border: solid grey 0.25rem
-	font-weight: 100
-	font-style: italic
-	max-width: 7.5rem
+	width: 100%
+	#bubble
+		position: absolute
+		padding: 0.25rem
+		bottom: 50%
+		left: 0
+		border-radius: 25%
+		border: solid grey 0.25rem
+		font-weight: 100
+		font-style: italic
+		background: white
+		color: grey
+		max-width: 10rem
+		max-height: 5rem
 	
-#win-state
+#win-state, #lose-state
 	display: none
 	.big
 		font-size: 200px
 		
 #instructions
-	margin-top: 256px;
+	margin-top: 256px
+	
+ul
+	li:before
+		content: "• "

@@ -13,7 +13,7 @@ module.exports = class LabelComp
     EventService.on 'mouseOver', (itemModel) ->
       currentItem = itemModel
       el.style.visibility = 'visible'
-      title.textContent = "#{itemModel.name}"
+      title.textContent = "#{itemModel.title or itemModel.name}"
       flavour.textContent = "#{itemModel.flavour}"
     
     EventService.on 'mouseOut', (itemModel) ->

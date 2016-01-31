@@ -2,12 +2,14 @@ html
 	head
 		script(src ="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/3.0.9/pixi.js")
 		script(src ="https://cdnjs.cloudflare.com/ajax/libs/keydrown/1.2.1/keydrown.js")
+		meta(name="viewport", content="height=384")
 		title baconfish global games jam
 	body
 		#label 
 			#title
 			#flavour
-		#bubble
+		#bubbleContainer
+			#bubble
 		#win-state
 			.big YOU WIN!
 			.small
@@ -16,8 +18,20 @@ html
 				p 
 					a(href="javascript:history.go(0)") Play again?
 					span &nbsp;&nbsp;(some things will be different?)
+		#lose-state
+			.big YOU LOSE!
+			.small
+				p You didn't get to work on time.
+				p 
+					a(href="javascript:history.go(0)") Play again?
+					span &nbsp;&nbsp;(some things will be different?)
 		#instructions
 			p Good morning.  You should complete your morning ritual before you leave for work.
 			p Click/tap on an item to use it.  If you can't see your whole apartment, scroll left/right.
 			p However, you must also satisfy the following of your own rituals:
 			ul#rituals
+			a(href="javascript:history.go(0)") Reroll?  (loses progress)
+			p 
+				span You have&nbsp;
+				span#timeRemaining 60
+				span &nbsp;seconds!

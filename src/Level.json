@@ -64,6 +64,7 @@
     "height": 75
   }, {
     "name": "hottap",
+    "title": "hot tap",
     "flavour": "Ouch!.",
     "position": {
       "x": 200,
@@ -73,7 +74,8 @@
     "height": 10
   }, {
     "name": "coldtap",
-    "flavour": "Ouch!.",
+    "title": "cold tap",
+    "flavour": "Brrr!.",
     "position": {
       "x": 215,
       "y": 175
@@ -91,6 +93,7 @@
     "height": 65
   }, {
     "name": "lightswitch",
+    "title": "bathroom lightswitch",
     "flavour": "flick!",
     "type": "lightswitch",
     "position": {
@@ -101,6 +104,7 @@
     "height": 24
   }, {
     "name": "lightswitchbedroom",
+    "title": "bedroom lightswitch",
     "flavour": "flick!",
     "type": "lightswitch",
     "position": {
@@ -232,6 +236,7 @@
     "height": 27
   }, {
     "name": "frontdoor",
+    "title": "front door",
     "flavour": "get out!",
     "position": {
       "x": 808,
@@ -269,6 +274,7 @@
     "defaultState": "on"
   }, {
     "name": "washingmachine",
+    "title": "washing machine",
     "flavour": "wrrrrr",
     "position": {
       "x": 1112,
@@ -304,9 +310,21 @@
       "y": 184
     },
     "width": 121,
-    "height": 65
+    "height": 65,
+    "states": {
+      "running": {
+        "x": 1352,
+        "y": 144,
+        "width": 24,
+        "height": 40
+      },
+      "used": null,
+      "unused": null
+    },
+    "defaultState": "unused"
   }, {
     "name": "tapKitchen",
+    "title": "kitchen tap",
     "flavour": "water",
     "position": {
       "x": 1350,
@@ -316,6 +334,7 @@
     "height": 40
   }, {
     "name": "lightswitchKitchen",
+    "title": "kitchen lightswitch",
     "flavour": "switch me",
     "type": "lightswitch",
     "position": {
