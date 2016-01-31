@@ -70,6 +70,9 @@ module.exports = class Game
           when rituals.enabled.ecoWorrier and level.rooms[0].instance.lit then EventService.trigger 'bubbleBegin', player._container, "The lights are on!"
           when rituals.enabled.ecoWorrier and level.rooms[1].instance.lit then EventService.trigger 'bubbleBegin', player._container, "The lights are on!"
           when rituals.enabled.ecoWorrier and level.rooms[2].instance.lit then EventService.trigger 'bubbleBegin', player._container, "The lights are on!"
+          when rituals.enabled.prideful and not player.hairDone then EventService.trigger 'bubbleBegin', player._container, "I couldn't possibly go out with hair like this!", 2000
+          when rituals.enabled.goodNeighbour and level.items.alarm.instance.state isnt "disarmed" then EventService.trigger 'bubbleBegin', player._container, "I don't want to disturb my neighbours!", 2000
+          when rituals.enabled.regularBM and not level.items.toilet.instance.used then EventService.trigger 'bubbleBegin', player._container, "I need to poop!", 2000
           else
             document
               .getElementById "win-state"
@@ -104,6 +107,7 @@ module.exports = class Game
         #TOILET  
         when itemModel.name is 'toilet'
           player.cleanHands = false
+          itemInstance.used = true
           EventService.trigger 'bubbleBegin', itemModel, '**flush**'
           
         #SINK  
@@ -125,7 +129,7 @@ module.exports = class Game
         when itemModel.name is 'mirror'
           if (level.getContainingRoomAt itemModel.position.x).instance.lit
             EventService.trigger 'bubbleBegin', player._container, 'Looking good!'
-            player.doneHair = true
+            player.setHairDone true
           else
             EventService.trigger 'bubbleBegin', player._container, 'I can\'t do my hair in the dark!'
         
@@ -167,7 +171,7 @@ module.exports = class Game
               if itemInstance.state is "unused"
                 itemInstance.setState "running"
                 player.locked = 40
-                player.doneHair = false
+                player.setHairDone false
                 player.cleanHands = true
                 EventService.trigger 'bubbleBegin', player._container, "Tra la la", 1500
                 
@@ -190,39 +194,43 @@ module.exports = class Game
             EventService.trigger 'bubbleBegin', player._container, "This is not the time to watch re-runs in my underwear!", 2500
         
         #FRIDGE    
-        when itemModel.name is "fridge" then switch itemInstance.state
-          when "unopened"
-            if player.dressed
-              if level.items.counter.instance.state is "unused"
-                EventService.trigger "bubbleBegin", player._container, "I need this to make my lunch.", 1500
+        when itemModel.name is "fridge" 
+          player.locked = player._container.position.x
+          switch itemInstance.state
+            when "unopened"
+              if player.dressed
+                if level.items.counter.instance.state is "unused"
+                  EventService.trigger "bubbleBegin", player._container, "I need this to make my lunch.", 1500
+                else
+                  EventService.trigger "bubbleBegin", player._container, "That's my lunch!  Mmm.", 1500
               else
-                EventService.trigger "bubbleBegin", player._container, "That's my lunch!  Mmm.", 1500
-            else
-              if level.items.counter.instance.state is "unused"
-                EventService.trigger "bubbleBegin", player._container, "I need this to make my lunch. I also need to dress; it's cold!", 2500
+                if level.items.counter.instance.state is "unused"
+                  EventService.trigger "bubbleBegin", player._container, "I need this to make my lunch. I also need to dress; it's cold!", 2500
+                else
+                  EventService.trigger "bubbleBegin", player._container, "That's my lunch.  It's freezing, I need to get dressed!", 2500
+              itemInstance.setState "opened"
+              UpdateService.once (-> 
+                  itemInstance.setState "closed"
+                  player.locked = null
+                  EventService.trigger "bubbleBegin", itemModel, "**slam**", 500
+                ), 1000
+            when "closed"
+              if player.dressed
+                if level.items.counter.instance.state is "unused"
+                  EventService.trigger "bubbleBegin", player._container, "Putting these ingredients back.", 1500
+                else
+                  EventService.trigger "bubbleBegin", player._container, "Putting my lunch away.", 1500
               else
-                EventService.trigger "bubbleBegin", player._container, "That's my lunch.  It's freezing, I need to get dressed!", 2500
-            itemInstance.setState "opened"
-            UpdateService.once (-> 
-                itemInstance.setState "closed"
-                EventService.trigger "bubbleBegin", itemModel, "**slam**", 500
-              ), 1000
-          when "closed"
-            if player.dressed
-              if level.items.counter.instance.state is "unused"
-                EventService.trigger "bubbleBegin", player._container, "Putting these ingredients back.", 1500
-              else
-                EventService.trigger "bubbleBegin", player._container, "Putting my lunch away.", 1500
-            else
-              if level.items.counter.instance.state is "unused"
-                EventService.trigger "bubbleBegin", player._container, "Putting these ingredients back.  Also really cold.", 2500
-              else
-                EventService.trigger "bubbleBegin", player._container, "Putting my lunch away.  Also really cold.", 2500
-            itemInstance.setState "opened"
-            UpdateService.once (-> 
-                itemInstance.setState "unopened"
-                EventService.trigger "bubbleBegin", itemModel, "**slam**", 500
-              ), 1000
+                if level.items.counter.instance.state is "unused"
+                  EventService.trigger "bubbleBegin", player._container, "Putting these ingredients back.  Also really cold.", 2500
+                else
+                  EventService.trigger "bubbleBegin", player._container, "Putting my lunch away.  Also really cold.", 2500
+              itemInstance.setState "opened"
+              UpdateService.once (-> 
+                  itemInstance.setState "unopened"
+                  player.locked = null
+                  EventService.trigger "bubbleBegin", itemModel, "**slam**", 500
+                ), 1000
         
         #COUNTER    
         when itemModel.name is "counter" then switch itemInstance.state
@@ -231,6 +239,7 @@ module.exports = class Game
               EventService.trigger 'bubbleBegin', player._container, "I should wash my hands first.", 2500
               return
             if level.items.fridge.instance.state is "closed"
+              player.locked = player._container.position.x
               itemInstance.setState "running"
               EventService.trigger 'bubbleBegin', itemModel, "**slice**", 2500
               chopping = =>
@@ -239,6 +248,7 @@ module.exports = class Game
               UpdateService.once (-> 
                   UpdateService.remove chopping
                   itemInstance.setState "used"
+                  player.locked = null
                   EventService.trigger 'bubbleBegin', player._container, "I now have my lunch.  And what a lunch it is.", 2500
               ), 2500
             else

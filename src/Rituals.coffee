@@ -17,6 +17,12 @@ module.exports = class Rituals
 			prideful:
 				text: "You take pride in your appearance."
 				install: ->
+			goodNeighbour:
+				text: "You don't like making noise for your neighbours."
+				install: ->
+			regularBM:
+				text: "You have a high fibre diet"
+				install: ->
 	
 		addedAtLeastOne = false
 		for key, value of types
