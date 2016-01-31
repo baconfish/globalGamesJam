@@ -14,12 +14,12 @@ document.body.appendChild renderer.view
 PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST
 
 PIXI.loader
-  .add "player", require "file!./dude1.png"
-  .add "playernude", require "file!./dude2.png"
-  .add "levelBright", require "file!./background_Animation 1_0.png"
-  .add "levelBright2", require "file!./background_Animation 1_1.png"
-  .add "levelDark", require "file!./background_Animation 1_2.png"
-  .add "levelDark2", require "file!./background_Animation 1_3.png"
+  .add "player", require "url!./dude1.png"
+  .add "playernude", require "url!./dude2.png"
+  .add "levelBright", require "url!./background_Animation 1_0.png"
+  .add "levelBright2", require "url!./background_Animation 1_1.png"
+  .add "levelDark", require "url!./background_Animation 1_2.png"
+  .add "levelDark2", require "url!./background_Animation 1_3.png"
   .load (loader, resources) ->
     for t of resources
       PIXI.Texture.addTextureToCache resources[t].texture, t
