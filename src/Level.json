@@ -37,6 +37,7 @@
     "defaultState": "unused"
   }, {
     "name": "toilet",
+    "title": "Toilet",
     "flavour": "Take a dump.",
     "position": {
       "x": 95,
@@ -46,7 +47,8 @@
     "height": 100
   }, {
     "name": "flusher",
-    "flavour": "flush.",
+    "title": "Toilet Flusher",
+    "flavour": "Flush!",
     "position": {
       "x": 130,
       "y": 150
@@ -55,6 +57,7 @@
     "height": 20
   }, {
     "name": "mirror",
+    "title": "Mirror",
     "flavour": "Take a selfie.",
     "position": {
       "x": 183,
@@ -64,7 +67,7 @@
     "height": 75
   }, {
     "name": "hottap",
-    "title": "hot tap",
+    "title": "Hot Tap",
     "flavour": "Ouch!.",
     "position": {
       "x": 200,
@@ -74,7 +77,7 @@
     "height": 10
   }, {
     "name": "coldtap",
-    "title": "cold tap",
+    "title": "Cold Tap",
     "flavour": "Brrr!.",
     "position": {
       "x": 215,
@@ -84,7 +87,9 @@
     "height": 10
   }, {
     "name": "sink",
-    "flavour": "no idea",
+    "type": "sink",
+    "title": "Sink",
+    "flavour": "It doesn't float.",
     "position": {
       "x": 183,
       "y": 185
@@ -93,8 +98,8 @@
     "height": 65
   }, {
     "name": "lightswitch",
-    "title": "bathroom lightswitch",
-    "flavour": "flick!",
+    "title": "Lightswitch",
+    "flavour": "Flick!",
     "type": "lightswitch",
     "position": {
       "x": 256,
@@ -104,8 +109,8 @@
     "height": 24
   }, {
     "name": "lightswitchbedroom",
-    "title": "bedroom lightswitch",
-    "flavour": "flick!",
+    "title": "Lightswitch",
+    "flavour": "Flick!",
     "type": "lightswitch",
     "position": {
       "x": 352,
@@ -115,7 +120,8 @@
     "height": 24
   }, {
     "name": "lightbulb",
-    "flavour": "praise the sun",
+    "title": "Lightbulb",
+    "flavour": "Praise the Sun.",
     "position": {
       "x": 127,
       "y": 21
@@ -124,6 +130,7 @@
     "height": 26
   }, {
     "name": "dresser",
+    "title": "Dresser",
     "flavour": "Get changed!",
     "position": {
       "x": 623,
@@ -143,7 +150,8 @@
     "defaultState": "closed"
   }, {
     "name": "nightstand",
-    "flavour": "upstanding!",
+    "title": "Nightstand",
+    "flavour": "Upstanding!",
     "position": {
       "x": 400,
       "y": 192
@@ -152,7 +160,8 @@
     "height": 56
   }, {
     "name": "alarm",
-    "flavour": "brrrrrringgg!",
+    "title": "Alarm",
+    "flavour": "BBbbrrrrrringgg!",
     "position": {
       "x": 407,
       "y": 152
@@ -171,7 +180,8 @@
     "defaultState": "ringing"
   }, {
     "name": "lightbulb",
-    "flavour": "praise the sun",
+    "title": "Lightbulb",
+    "flavour": "Praise the Sun.",
     "position": {
       "x": 543,
       "y": 21
@@ -180,7 +190,8 @@
     "height": 27
   }, {
     "name": "bed",
-    "flavour": "ZZZZZzzzzzz",
+    "title": "Bed",
+    "flavour": "ZZZZZzzzzzz.",
     "position": {
       "x": 471,
       "y": 165
@@ -199,7 +210,8 @@
     "defaultState": "unmade"
   }, {
     "name": "picture",
-    "flavour": "pretty",
+    "title": "Picture",
+    "flavour": "It's pretty.",
     "position": {
       "x": 511,
       "y": 95
@@ -218,7 +230,8 @@
     "defaultState": "crooked"
   }, {
     "name": "lightbulb",
-    "flavour": "praise the sun",
+    "title": "Lightbulb",
+    "flavour": "Praise the Sun.",
     "position": {
       "x": 911,
       "y": 21
@@ -227,7 +240,8 @@
     "height": 27
   }, {
     "name": "lightbulb",
-    "flavour": "praise the sun",
+    "title": "Lightbulb",
+    "flavour": "Praise the Sun.",
     "position": {
       "x": 1199,
       "y": 21
@@ -236,8 +250,8 @@
     "height": 27
   }, {
     "name": "frontdoor",
-    "title": "front door",
-    "flavour": "get out!",
+    "title": "Front Door",
+    "flavour": "Get Out!",
     "position": {
       "x": 808,
       "y": 96
@@ -246,7 +260,8 @@
     "height": 152
   }, {
     "name": "sofa",
-    "flavour": "smushy",
+    "title": "Sofa",
+    "flavour": "It's comfy.",
     "position": {
       "x": 919,
       "y": 176
@@ -255,7 +270,8 @@
     "height": 72
   }, {
     "name": "tv",
-    "flavour": "gogglebox",
+    "title": "TV",
+    "flavour": "The gogglebox.",
     "position": {
       "x": 1056,
       "y": 168
@@ -274,8 +290,8 @@
     "defaultState": "on"
   }, {
     "name": "washingmachine",
-    "title": "washing machine",
-    "flavour": "wrrrrr",
+    "title": "Washing Machine",
+    "flavour": "Wwrrrrr.",
     "position": {
       "x": 1112,
       "y": 168
@@ -284,7 +300,8 @@
     "height": 80
   }, {
     "name": "fridge",
-    "flavour": "iced ice baby",
+    "title": "Fridge",
+    "flavour": "Ice Ice Baby.",
     "position": {
       "x": 1192,
       "y": 96
@@ -304,7 +321,8 @@
     "defaultState": "unopened"
   }, {
     "name": "counter",
-    "flavour": "things",
+    "title": "Counter",
+    "flavour": "Always on top.",
     "position": {
       "x": 1303,
       "y": 184
@@ -324,8 +342,9 @@
     "defaultState": "unused"
   }, {
     "name": "tapKitchen",
-    "title": "kitchen tap",
-    "flavour": "water",
+    "type": "sink",
+    "title": "Kitchen Tap",
+    "flavour": "Its in sync.",
     "position": {
       "x": 1350,
       "y": 144
@@ -334,8 +353,8 @@
     "height": 40
   }, {
     "name": "lightswitchKitchen",
-    "title": "kitchen lightswitch",
-    "flavour": "switch me",
+    "title": "Lightswitch",
+    "flavour": "Flick!",
     "type": "lightswitch",
     "position": {
       "x": 920,

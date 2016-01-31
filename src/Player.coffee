@@ -19,25 +19,12 @@ module.exports = class Player
     
     @_container.click = -> EventService.trigger 'clicked', {s:'something'}
     
-    EventService.on 'proximity', (itemModel, itemInstance) =>
-      if itemModel.name is 'dresser' and itemInstance.state is "closed"
-        if @dressed
-          sprite.texture = PIXI.utils.TextureCache.playernude
-          @dressed = false
-        else
-          sprite.texture = PIXI.utils.TextureCache.player
-          @dressed = true
-        itemInstance.setState "opened"
-        setTimeout (-> itemInstance.setState "closed"), 500
-      if itemModel.name is 'lightbulb'
-        EventService.trigger 'bubbleBegin', @_container, 'i can\'t reach that'
-      if itemModel.name is 'toilet'
-        EventService.trigger 'bubbleBegin', itemModel, '**flush**'
-      if itemModel.name is 'mirror'
-        EventService.trigger 'bubbleBegin', @_container, 'looking good!'
-      if itemModel.type is 'lightswitch'
-        EventService.trigger 'bubbleBegin', itemModel, '**click**'
-
+    @setDressed = (dressed) ->
+      @dressed = dressed
+      if not @dressed
+        sprite.texture = PIXI.utils.TextureCache.playernude
+      else
+        sprite.texture = PIXI.utils.TextureCache.player
         
     EventService.on 'objectClicked', (itemModel, itemInstance) =>
       if @locked isnt null then return
@@ -49,12 +36,14 @@ module.exports = class Player
         if kd.H.isDown()
           EventService.trigger 'bubbleBegin', @_container, 'why am i thinking this', 1
         if kd.D.isDown()
-          @_container.position.x += 5
+          if @_container.position.x + 5 < 1440
+            @_container.position.x += 5
           sprite.scale.x = 1
           target = null
           return
         if kd.A.isDown()
-          @_container.position.x -= 5
+          if @_container.position.x - 5 > 0
+            @_container.position.x -= 5
           sprite.scale.x = -1
           target = null
           return

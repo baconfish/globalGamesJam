@@ -1,30 +1,36 @@
-types = []
-###
-		text: "Everything must be straight."
-		install: ->
-	,
-		text: "You can't leave any power on."
-		install: ->
-	,
-  	text: "You can't work in a dark room while the lights are out."
-  	install: ->
-	,
-  	text: "You must wash your hands between every action."
-  	install: ->
-###
-module.exports = class Rituals
-  constructor: ->
-  	addedAtLeastOne = false
-  	for value of types
-  		if Math.random() > 0.5 then continue
-  		el = document.createElement "li"
-  		el.innerText = value.text
-  		document.getElementById "rituals"
-  			.appendChild el
-  		addedAtLeastOne = true
+EventService = require "./EventService.coffee"
 
-  	if not addedAtLeastOne
-  		el = document.createElement "li"
-  		el.innerText = "(none)"
-  		document.getElementById "rituals"
-  			.appendChild el
+module.exports = class Rituals
+	constructor: (level, player) ->
+		@enabled = {}
+		
+		types = 
+			poorNightVision:
+				text: "You're scared of the dark."
+				install: ->
+			everythingStraight:
+				text: "You're something of a neat freak."
+				install: ->
+			ecoWorrier:
+				text: "You consider yourself an eco worrier."
+				install: ->
+			prideful:
+				text: "You take pride in your appearance."
+				install: ->
+	
+		addedAtLeastOne = false
+		for key, value of types
+			if Math.random() > 0.5 then continue
+			value.install()
+			el = document.createElement "li"
+			el.innerText = value.text
+			document.getElementById "rituals"
+				.appendChild el
+			addedAtLeastOne = true
+			@enabled[key] = true
+		
+		if not addedAtLeastOne
+			el = document.createElement "li"
+			el.innerText = "(none)"
+			document.getElementById "rituals"
+				.appendChild el

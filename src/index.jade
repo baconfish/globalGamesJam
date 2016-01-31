@@ -10,7 +10,7 @@ html
 			#flavour
 		#bubbleContainer
 			#bubble
-		#win-state
+		#win-state.end-state
 			.big YOU WIN!
 			.small
 				p You managed to get all your things and had a good day at work.
@@ -18,10 +18,17 @@ html
 				p 
 					a(href="javascript:history.go(0)") Play again?
 					span &nbsp;&nbsp;(some things will be different?)
-		#lose-state
+		#lose-state.end-state
 			.big YOU LOSE!
 			.small
 				p You didn't get to work on time.
+				p 
+					a(href="javascript:history.go(0)") Play again?
+					span &nbsp;&nbsp;(some things will be different?)
+		#lose-state-straightened.end-state
+			.big YOU LOSE!
+			.small
+				p You can't leave the house without having made sure everything is straight!
 				p 
 					a(href="javascript:history.go(0)") Play again?
 					span &nbsp;&nbsp;(some things will be different?)
